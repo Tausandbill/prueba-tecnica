@@ -10,7 +10,7 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <title>Prueba</title>
 </head>
-<body>
+<body id="main">
     <div class="container">
         <div class="row justify-content-center">
             @yield('content')
