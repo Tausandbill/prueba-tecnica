@@ -11,6 +11,6 @@
 
 <p>La ultima es "Eliminar", esto genera una <code>delete</code> request a JSONPlaceholder para eliminar el ToDo seleccionado. Esta request se ejecuta desde el <code>TodosController</code> en el metodo <code>destroy</code>.</p>
 
-<p>Debido a que JSONPlaceholder es solo para pruebas y no se permite ningun cambio a la informacion, las acciones de <code>post, put, delete</code> no pueden reflejar ningun cambio en los datos, por tal se utilizo <code>dd($response)</code> para verificar la que metodos funcionaran.</p>
+<p>Debido a que JSONPlaceholder es solo para pruebas y no se permite ningun cambio a la informacion, las acciones de <code>post, put, delete</code> no pueden reflejar ningun cambio en los datos, por tal se utilizo <code>dd($response)</code> para verificar la que metodos funcionaran. Para revisar que las repuestas del servidor fueran correctas tambien se utilizo JavaScript lo que permitio ver en la consola la repuesta del servidor</p>
 
 
