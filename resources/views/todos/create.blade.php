@@ -14,7 +14,7 @@
             @csrf
             <div class="form-group">
                 <label for="title">Titulo</label>
-                <input type="text" name="title" class="form-control" id="title">
+                <input type="text" name="title" class="form-control" id="title" required>
                 <small id="title" class="form-text text-muted">Titulo del ToDo</small>
             </div>
             <input type="hidden" name="userId" id="userId" value="{{$userId}}">
