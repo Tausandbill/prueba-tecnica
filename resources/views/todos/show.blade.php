@@ -33,6 +33,7 @@
                             @csrf
                             <td><button type="submit" class="btn btn-sm btn btn-outline-success mr-5">Completar</button></td>
                             <input type="hidden" name="flag" value="completed">
+                            <input type="hidden" name="userId" value="{{$todo['userId']}}">
                         </form>
                     @else
                         <td></td>

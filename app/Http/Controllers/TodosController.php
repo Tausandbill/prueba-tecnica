@@ -56,32 +56,30 @@ class TodosController extends Controller
             'title' => $title,
             'completed' => false
         ]);
-        
+
         //Descomentar para ver respuesta de la request
         //dd($response);
 
-        return view('todos.create', compact('userId'));
+        return redirect('/todos/show/' . $userId);
     }
 
     public function update($todoId)
     {
+        $userId = request()->userId;
+
         //Determinado si se esta editando el ToDo o marcandolo como completado
         if (request()->flag == 'completed') {
-
+            
             //Generando PUT request al API para actualizar campo 'completed'
             $response = Http::withHeaders([
                 'Content-type' => 'application/json; charset=UTF-8',
             ])->put('https://jsonplaceholder.typicode.com/todos/' . $todoId, [
                 'id' => $todoId,
                 'completed' => true
-            ]);
-
-            //Descomentar para ver respuesta de la request
-            //dd($response);
+            ]);            
         }
         else {
             //Recibiendo datos de la forma
-            $userId = request()->userId;
             $title = request()->title;
             $completed = request()->completed;
 
@@ -94,12 +92,12 @@ class TodosController extends Controller
                 'title' => $title,
                 'completed' => $completed
             ]);
+        } 
 
         //Descomentar para ver respuesta de la request
-        //dd($response);
-        }       
+        //dd($response);     
 
-        return redirect('/todos/show/'. $todoId);
+        return redirect('/todos/show/'. $userId);
     }
 
     public function destroy($todoId)
