@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Http;
 
 class TodosController extends Controller
 {
+    public $url = 'https://jsonplaceholder.typicode.com/todos/';
+
     public function show($userId){
         //GET request a JSONPlaceHolder
-        $users = Http::get('https://jsonplaceholder.typicode.com/todos')->json();     
+        $users = Http::get($this->url)->json();     
         
         //Creando collecion de los resultados
         $collection = collect($users);
@@ -27,7 +29,7 @@ class TodosController extends Controller
     public function edit($todoId)
     {
         //GET request a JSONPlaceHolder
-        $users = Http::get('https://jsonplaceholder.typicode.com/todos')->json();
+        $users = Http::get($this->url)->json();
 
         //Creando collecion de los resultados
         $collection = collect($users);
@@ -51,7 +53,7 @@ class TodosController extends Controller
         //Generando POST request al API
         $response = Http::withHeaders([
             'Content-type' => 'application/json; charset=UTF-8',
-        ])->post('https://jsonplaceholder.typicode.com/todos', [
+        ])->post($this->url, [
             'userId' => $userId,
             'title' => $title,
             'completed' => false
@@ -73,7 +75,7 @@ class TodosController extends Controller
             //Generando PUT request al API para actualizar campo 'completed'
             $response = Http::withHeaders([
                 'Content-type' => 'application/json; charset=UTF-8',
-            ])->put('https://jsonplaceholder.typicode.com/todos/' . $todoId, [
+            ])->put($this->url . $todoId, [
                 'id' => $todoId,
                 'completed' => true
             ]);            
@@ -86,7 +88,7 @@ class TodosController extends Controller
             //Generando PUT request al API para actualizar campo 'title'
             $response = Http::withHeaders([
                 'Content-type' => 'application/json; charset=UTF-8',
-            ])->put('https://jsonplaceholder.typicode.com/todos/' . $todoId, [
+            ])->put($this->url . $todoId, [
                 'userId' => $userId,
                 'id' => $todoId,
                 'title' => $title,
@@ -101,15 +103,17 @@ class TodosController extends Controller
     }
 
     public function destroy($todoId)
-    {        
+    {    
+        $userId = request()->userId;
+        
         //Generando DELETE request al API
         $response = Http::withHeaders([
             'Content-type' => 'application/json; charset=UTF-8',
-        ])->delete('https://jsonplaceholder.typicode.com/todos/' . $todoId, []);
+        ])->delete($this->url . $todoId, []);
 
         //Descomentar para ver respuesta de la request
         //dd($response);
 
-        return redirect('/todos/show/' . $todoId);
+        return redirect('/todos/show/' . $userId);
     }
 }

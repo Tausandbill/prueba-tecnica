@@ -43,6 +43,7 @@
                         @method('DELETE')
                         @csrf
                         <td><button type="submit" class="btn btn-sm btn btn-outline-danger mr-5">Eliminar</button></td>
+                        <input type="hidden" name="userId" value="{{$todo['userId']}}">
                     </form>                    
                     
                 </tr>
