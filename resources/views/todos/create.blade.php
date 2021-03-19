@@ -18,11 +18,12 @@
                 <small id="title" class="form-text text-muted">Titulo del ToDo</small>
             </div>
             <input type="hidden" name="userId" id="userId" value="{{$userId}}">
-            <button type="submit" onclick="update()" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
 <script>
+
     function update(){
         var userId = document.getElementById('userId').value;
         var title = document.getElementById('title').value;
@@ -41,9 +42,7 @@
         .then((response) => response.json())
         .then((json) => console.log(json));
         
-    }
-    
-    
+    }    
     
 </script>
 

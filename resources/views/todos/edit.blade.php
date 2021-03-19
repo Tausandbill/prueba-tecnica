@@ -21,7 +21,7 @@
             <input type="hidden" name="userId" id="userId" value="{{$todo[$todoId-1]["userId"]}}">
             <input type="hidden" name="id" id="id" value="{{$todo[$todoId-1]["id"]}}">
             <input type="hidden" name="completed" id="completed" value="{{$todo[$todoId-1]["completed"] ? 'true' : 'false'}}">
-            <button type="submit" onclick="update()" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
@@ -46,11 +46,8 @@
             },
         })
         .then((response) => response.json())
-        .then((json) => console.log(json));
-        
-    }
-    
-    
+        .then((json) => console.log(json));        
+    }   
     
 </script>
 
